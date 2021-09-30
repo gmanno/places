@@ -1,5 +1,7 @@
 var express = require("express");
 
+var cors = require("cors");
+
 var app = express();
 const places = require("./api/places");
 
@@ -7,6 +9,7 @@ if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
 const compression = require("compression");
+app.use(cors());
 app.use(express.json());
 app.use(compression());
 

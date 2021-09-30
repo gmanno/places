@@ -28,6 +28,8 @@ app.get("/api/item/:slug", (req, res) => {
 });
 
 app.post(`/api/location`, async (req, res) => {
+  res.setHeader("Content-Type", "text/html");
+  res.setHeader("Cache-Control", "s-max-age=1, stale-while-revalidate");
   const { address } = req.body;
   let addressData = await getLocation(address);
   res.json({
